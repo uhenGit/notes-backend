@@ -11,12 +11,3 @@ export class NotesDto {
 
   tags?: string[];
 }
-
-/* interface NotesDto {
-  title: string;
-  content?: string;
-  createdAt: Date;
-  tags?: string[];
-}
-
-export { NotesDto } */

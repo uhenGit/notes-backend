@@ -53,11 +53,11 @@ export class NotesService {
     }
   }
 
-  async getNotesByTag(tag: string): Promise<Note[]> {
+  async getNotesByTag(tag: string | string[]): Promise<Note[]> {
     try {
       return this.noteModel
         .find({
-          tags: { $eq: [tag] },
+          tags: { $in: tag },
         })
         .exec();
     } catch (err) {

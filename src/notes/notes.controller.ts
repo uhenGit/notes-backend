@@ -90,7 +90,7 @@ export class NotesController {
 
   @Get('filter')
   async getNotes(
-    @Query() query: { tag: '' },
+    @Query() query: { tag: string | string[] },
     @ApiDecorator('x-api-header') accept: boolean,
   ): Promise<Note[] | HttpException> {
     if (accept) {
