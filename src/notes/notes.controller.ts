@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { NotesDto } from './notes.dto';
-import { Note } from '../schemas/note.scema';
+import { Note } from '../schemas/note.schema';
 import { ApiDecorator } from '../common/decorators';
 
 @Controller('notes')

@@ -36,15 +36,18 @@ $ npm run start:prod
 - '/delete/:id' deletes note by provided id
 - '/filter/?tag=<tag_name>' returns a list of notes filtered by provided tag (the /?tag=<tag_name>&tag=<tag_name> is also supports)
 
+### POST payload example
+```bash
+{
+    title: 'Recipe',
+    content: 'Egg, Slice of bread, Butter, Garlic',
+    tags: 'breakfast simple 15min',
+}
+```
+
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ npm run test:unit
 ```

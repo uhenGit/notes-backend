@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { NotesDto } from './notes.dto';
-import { Note } from '../schemas/note.scema';
+import { Note } from '../schemas/note.schema';
 
 @Injectable({})
 export class NotesService {
@@ -10,8 +10,7 @@ export class NotesService {
 
   async createNote(dto: NotesDto): Promise<Note> {
     try {
-      const createdNote = new this.noteModel(dto);
-      return createdNote.save();
+      return this.noteModel.create(dto);
     } catch (err) {
       throw new InternalServerErrorException(`Create error: ${err.message}`);
     }
@@ -54,10 +53,11 @@ export class NotesService {
   }
 
   async getNotesByTag(tag: string | string[]): Promise<Note[]> {
+    const searchTag = typeof tag === 'string' ? [tag] : tag;
     try {
       return this.noteModel
         .find({
-          tags: { $in: tag },
+          tags: { $in: searchTag },
         })
         .exec();
     } catch (err) {
